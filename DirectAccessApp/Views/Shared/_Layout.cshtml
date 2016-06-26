@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Client application", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("Test Based on Url", "Index", "Special")</li>*@
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    var mywin = "";
+    var show = function () {
+
+        var url = '@Url.Action("SignIn", "Direct")';
+        mywin = window.open(url, "SportsPassLogin", "height=600,width=800,scrollbars=yes");
+        var loop = setInterval(function () {
+
+            if (mywin.closed) {
+                clearInterval(loop);
+                window.location.href = "/";
+            }
+        }, 1000);
+        setInterval(function () {
+            var z = mywin.location;
+            var origin = z.origin;
+           var url= z.href;
+           if (url.endsWith(origin+'/')) {
+                mywin.close();
+                window.location.href = "/";
+            }
+        }, 1000);
+
+
+    }
+    $(".my_popup_open").click(function () {
+        show();
+    });
+    $("#liSO").click(function() {
+        logoutSportpass();
+    });
+    var logout = '';
+    function popupwindow(url, title, w, h) {
+        var left = (screen.width / 2) - (w / 2);
+        var top = (screen.height / 2) - (h / 2);
+        return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+    }
+    var logoutSportpass = function () {
+
+        popupwindow("https://sportspassapi.nepalipaisa.com/oauth/logout", "SportsPassLogin", 10, 10);
+    }
+
+    </script>
+</body>
+</html>

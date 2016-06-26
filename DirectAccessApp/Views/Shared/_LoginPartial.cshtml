@@ -1,0 +1,21 @@
+﻿@using System.Security.Claims
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Hello " + ((ClaimsIdentity)User.Identity).FindFirst("name").Value + "!", "Index", "Home")
+        </li>
+        @*<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>*@
+        <li id="liSO">@Html.ActionLink("SignOut", "SignOut", "Direct")</li>
+    </ul>
+
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Login with Id Server", "SignIn", "Direct")</li>
+    </ul>
+}

@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0B23B22A-A55F-462F-B0E6-F20357114AAA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenIdentityCustomService</RootNamespace>
+    <AssemblyName>OpenIdentityCustomService</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntiXssLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\AntiXssLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IdentityServer3, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\IdentityServer3.2.5.0\lib\net45\IdentityServer3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SageFrame.Common, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\sflib\SageFrame.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="SageFrame.Security, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\sflib\SageFrame.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppClient\AppClients.cs" />
+    <Compile Include="AppClient\ClientStorage.cs" />
+    <Compile Include="Configuration\Certificate.cs" />
+    <Compile Include="Configuration\ScopeProvider.cs" />
+    <Compile Include="Configuration\Scopes.cs" />
+    <Compile Include="CustomClaimProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RazorExtensions.cs" />
+    <Compile Include="Services\EulaAtLoginUserService.cs" />
+    <Compile Include="Services\ExternalRegistrationUserService.cs" />
+    <Compile Include="Services\LocalRegistrationUserService.cs" />
+    <Compile Include="Services\RegisterFirstExternalRegistrationUserService.cs" />
+    <Compile Include="Services\SfUserService.cs" />
+    <Compile Include="User\EulaUser.cs" />
+    <Compile Include="User\ExternalRegUser.cs" />
+    <Compile Include="User\LocalUser.cs" />
+    <Compile Include="User\ExternalUser.cs" />
+    <Compile Include="User\SfUser.cs" />
+    <Compile Include="ViewService\CustomViewService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CustomViews\app\app.css" />
+    <Content Include="CustomViews\app\app.js" />
+    <Content Include="CustomViews\app\consent.html" />
+    <Content Include="CustomViews\app\error.html" />
+    <Content Include="CustomViews\app\loggedOut.html" />
+    <Content Include="CustomViews\app\login.html" />
+    <Content Include="CustomViews\app\logout.html" />
+    <Content Include="CustomViews\app\permissions.html" />
+    <Content Include="CustomViews\lib\angular\angular.1.2.13.js" />
+    <Content Include="CustomViews\lib\angular\angular.1.2.13.min.js" />
+    <Content Include="CustomViews\lib\bootstrap\custom.css" />
+    <Content Include="CustomViews\lib\bootstrap\custom.min.css" />
+    <Content Include="CustomViews\lib\encoder\encoder.js" />
+    <Content Include="CustomViews\lib\encoder\encoder.min.js" />
+    <Content Include="CustomViews\lib\jquery\jquery-1.11.0.js" />
+    <Content Include="CustomViews\lib\jquery\jquery-1.11.0.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Configuration\idsrv3test.pfx" />
+    <None Include="CustomViews\lib\bootstrap\custom.less" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomViews\lib\bootstrap\css\" />
+    <Folder Include="CustomViews\lib\bootstrap\fonts\" />
+    <Folder Include="CustomViews\lib\bootstrap\js\" />
+    <Folder Include="CustomViews\lib\bootstrap\less\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

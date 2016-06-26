@@ -1,0 +1,66 @@
+﻿@model IdentityServer3.Core.Models.ClientPermission
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class='container page-permissions' >
+    <div class="row page-header">
+        <div class="col-sm-10">
+            <h1>
+                Client Application Permissions
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="alert alert-danger">
+                <strong>Error:</strong>
+                @ViewBag.ErrorMessage
+            </div>
+        </div>
+        <div class="col-sm-8" >
+            <div class="alert alert-info">
+                You have not given permission to any applications
+            </div>
+        </div>
+    </div>
+    <div class="permissions">
+        <div  class="row permission">
+            <div class="col-sm-2">
+                <img src="@Model.ClientLogoUrl">
+            </div>
+            <div class="col-sm-8">
+                <div class="permission-clientname">@Model.ClientName</div>
+                <div ng-show="client.identityPermissions">
+                    <div class="permission-type">Identity Permissions</div>
+                    <ul>
+                        @foreach (var item in Model.IdentityPermissions)
+                        {
+                            <li> @item.DisplayName</li>
+
+                        }
+                    </ul>
+                </div>
+                <div ng-show="client.resourcePermissions">
+                    <div class="permission-type">Resource Permissions</div>
+                    <ul>
+                        @foreach (var item in Model.ResourcePermissions)
+                        {
+                            <li> @item.DisplayName</li>
+
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-2">
+               
+                @*@using (Html.BeginForm("Controller Action Method", "Controller Name", FormMethod.Post, new {id = "_concentform"}))
+                {*@
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="clientId" value="@Model.ClientId">
+                    <button class="btn btn-danger">Revoke Access</button>
+
+                @*}*@
+            </div>
+        </div>
+    </div>
+</div>

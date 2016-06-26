@@ -1,0 +1,19 @@
+﻿@using Newtonsoft.Json.Linq
+@model Newtonsoft.Json.Linq.JObject
+
+ @{
+    ViewBag.Title = "Urldemo";
+}
+
+<h2>Urldemo</h2>
+
+<p>
+    <dl>
+        @foreach (JProperty claim in (JToken)Model)
+        {
+            <dt>@claim.Name</dt>
+            <dd>@claim.Value</dd>
+        }
+    </dl>
+</p>
+
