@@ -3,8 +3,8 @@
 This is a simply merged projects of identity samples(provided by thinktecture).
 I've made it few changes so that easity anyone can understand and implement as your needs, enjoy :)
 Customized features are
-#custom view service
+custom view service \n
 #custom user service
-#cutom claim provider
+#custom claim provider
 
 -Bakamaru
